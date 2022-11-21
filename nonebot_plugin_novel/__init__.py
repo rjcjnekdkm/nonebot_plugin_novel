@@ -150,7 +150,7 @@ async def get_recommend(bot: Bot,event: GroupMessageEvent):
                     book = a.get('href').split('/')[-2]+a.get('title')
                     books.append(book)
 
-    # 获取小说类型合小说作者
+    # 获取小说类型和小说作者
     for i in range(len(authors)):
         if i%6 == 0:
             style = authors[i]
@@ -197,7 +197,7 @@ async def get_week_(bot: Bot,event: GroupMessageEvent):
                     book = a.get('href').split('/')[-2]+a.get('title')
                     books.append(book)
 
-    # 获取小说类型合小说作者
+    # 获取小说类型和小说作者
     for i in range(len(authors)):
         if i%6 == 0:
             style = authors[i]
@@ -244,7 +244,7 @@ async def get_month_(bot: Bot,event: GroupMessageEvent):
                     book = a.get('href').split('/')[-2]+a.get('title')
                     books.append(book)
 
-    # 获取小说类型合小说作者
+    # 获取小说类型和小说作者
     for i in range(len(authors)):
         if i%6 == 0:
             style = authors[i]
