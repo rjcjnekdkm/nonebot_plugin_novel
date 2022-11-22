@@ -23,9 +23,9 @@ get_month = on_fullmatch("月排行榜",permission=SUPERUSER | GROUP_ADMIN | GRO
 
 
 # ---------------合并消息转发------------ #
-
+# 合并消息转发摘自作者@MRSlouzk的Nonebot-plugintutorials，感谢
 async def send_forward_msg(
-        bot: Bot,
+        bot: Bot,                                                  
         event: MessageEvent,
         name: str,
         uin: str,
@@ -54,7 +54,7 @@ async def send_forward_msg(
 # ---------------获取正文内容------------ #
 
 @get_novel.handle()
-async def _novel(bot: Bot,event: GroupMessageEvent):
+async def _novel(bot: Bot,event: MessageEvent):
     # 从接收的消息中提取小说和章节id
     msg = str(event.message)
     ht = msg[4:]
@@ -92,7 +92,7 @@ async def _novel(bot: Bot,event: GroupMessageEvent):
 # ---------------获取章节列表------------ #
 
 @get_title_id.handle()
-async def title_id(bot: Bot,event: GroupMessageEvent):
+async def title_id(bot: Bot,event: MessageEvent):
     # 从接收的消息中提取小说id
     msg = str(event.message)
     novel_id = msg[2:-2]
@@ -123,7 +123,7 @@ async def title_id(bot: Bot,event: GroupMessageEvent):
 # ---------------获取获取本站推荐------------ #
 
 @get_Recommend.handle()
-async def get_recommend(bot: Bot,event: GroupMessageEvent):
+async def get_recommend(bot: Bot,event: MessageEvent):
     url = "https://www.xbiquge.so/top/toptime/"
     resp = requests.get(url)
     obj1 = re.compile(r'<h2>本站推荐</h2>(?P<text>.*?)<em id="pagestats">',re.S)
@@ -170,7 +170,7 @@ async def get_recommend(bot: Bot,event: GroupMessageEvent):
 # ---------------获取周排行榜----------- #
 
 @get_week.handle()
-async def get_week_(bot: Bot,event: GroupMessageEvent):
+async def get_week_(bot: Bot,event: MessageEvent):
     url = "https://www.xbiquge.so/top/weekvisit/"
     resp = requests.get(url)
     obj1 = re.compile(r'<h2>周排行榜</h2>(?P<text>.*?)<em id="pagestats">',re.S)
@@ -217,7 +217,7 @@ async def get_week_(bot: Bot,event: GroupMessageEvent):
 # ---------------获取月排行榜------------ #
     
 @get_month.handle()
-async def get_month_(bot: Bot,event: GroupMessageEvent):
+async def get_month_(bot: Bot,event: MessageEvent):
     url = "https://www.xbiquge.so/top/monthvisit/"
     resp = requests.get(url)
     obj1 = re.compile(r'<h2>月排行榜</h2>(?P<text>.*?)<em id="pagestats">',re.S)
